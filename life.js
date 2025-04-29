@@ -182,32 +182,32 @@ points[63].status = 1;
 points[64].status = 1;
 points[65].status = 1;
 
-
-let points2 = points;
 // plot animation, change status
 // ================================ stopped here; check point variables for errors (are they being switched appropriately)
 const end =2;
+let points2 = [];
 
 for(let i=0; i<end; i++){
-    log('before');
-    logAD(points, 1);
+    // log('before');
+    // logAD(points, 1);
 
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.fillRect(0, 0, width, height);
-    log('iteration', i);
+    // log('iteration', i);
     for (let pt=0; pt <  points.length; pt++) {
         // need two sets of points
         points[pt].draw();
         let statusChange = points[pt].changeStatus();
+        points2[pt] = {...points[pt]};
         points2[pt].status = statusChange;
     }
-    log('after');
-    logAD(points, 1);
+    // log('after');
+    // logAD(points, 1);
 
     points = points2;
 
-    if (i==0){
-        ctx.clearRect(0, 0, width, height);
-    }
+    // if (i==0){
+    //     ctx.clearRect(0, 0, width, height);
+    // }
     
 }
